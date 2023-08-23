@@ -8,7 +8,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(CatalogController.class)
-public class CatalogControllerTest {
+public class CatalogControllerTests {
     @Autowired
     MockMvc mvc;
 

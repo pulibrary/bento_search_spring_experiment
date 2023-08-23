@@ -15,7 +15,17 @@ The application will be available in your browser at http://localhost:8080
 ### Run tests
 
 ```
+# run all tests
 mvn test
+
+# run only CatalogController tests
+mvn -Dtest=CatalogControllerTests test
+
+# Run CatalogController and BentoApplication tests
+mvn -Dtest=CatalogControllerTests,BentoApplicationTests test
+
+# Run only the catalogPathReturnsOK test
+mvn -Dtest=CatalogControllerTests#catalogPathReturnsOK test
 ```
 
 In VSCode, if you have the Java extensions installed, you can simply click the
