@@ -1,4 +1,3 @@
-* URL that links to search results based on param
 * Add hard-coded results to the API response
 * Add solrj and fetch first 3 results
 * Add total count

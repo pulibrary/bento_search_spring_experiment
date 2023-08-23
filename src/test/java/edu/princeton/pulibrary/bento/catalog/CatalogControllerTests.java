@@ -14,8 +14,14 @@ public class CatalogControllerTests {
 
     @Test
     void catalogPathReturnsOK() throws Exception {
-        this.mvc.perform(get("/search/catalog"))
+        this.mvc.perform(get("/search/catalog?query=art+history"))
                 .andExpect(status().isOk());
     }
-    
+
+    @Test
+    void catalogPathWithoutParamReturnsBadRequest() throws Exception {
+        this.mvc.perform(get("/search/catalog"))
+                .andExpect(status().isBadRequest());
+    }
+
 }
