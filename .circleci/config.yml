@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  maven: circleci/maven@1.4.1
 jobs:
   bearer:
     docker:
@@ -25,3 +27,9 @@ workflows:
     jobs:
       - bearer
       - semgrep
+      - maven/test:
+          executor: openjdk
+executors:
+  openjdk:
+    docker:
+      - image: cimg/openjdk:17.0.8
