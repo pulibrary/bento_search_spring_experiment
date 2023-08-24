@@ -63,6 +63,22 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<configuration>
+					<violationSeverity>warning</violationSeverity>
+				</configuration>
+				<executions>
+					<execution>
+					  <id>checkstyle</id>
+					  <phase>validate</phase>
+					  <goals>
+						<goal>check</goal>
+					  </goals>
+					</execution>
+				  </executions>
+			</plugin>
 		</plugins>
 	</build>
 

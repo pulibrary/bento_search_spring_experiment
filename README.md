@@ -32,6 +32,12 @@ In VSCode, if you have the Java extensions installed, you can simply click the
 "Play" button near the test to run it.  This is very convenient, especially since it
 displays the results inline in the file, and keeps a log of success/failure.
 
+### Lint
+
+`mvn checkstyle:checkstyle`
+
+This adds a report to target/site/checkstyle.html, which you can peruse in the browser.
+
 ### Compile a JAR
 
 ```
