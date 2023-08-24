@@ -1,5 +1,6 @@
 package edu.princeton.pulibrary.bento.catalog;
 
+import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
 
 public final class CatalogSearchFactory {
@@ -32,6 +33,26 @@ public final class CatalogSearchFactory {
     public CatalogSearch build() {
         CatalogSearch search = new CatalogSearch(query);
         search.setTotalResults(solrResults.getNumFound());
+        for (SolrDocument document : solrResults) {
+            final String title =
+                (String) document.getFirstValue("title_display");
+            final String id =
+                (String) document.getFirstValue("id");
+            final String url =
+                "https://catalog.princeton.edu/catalog/" + id;
+            String author =
+                (String) document.getFirstValue("author_display");
+            String description =
+                (String) document.getFirstValue("pub_created_display");
+
+            CatalogSearchResult result =
+                new CatalogSearchResult(title,
+                                        url,
+                                        author,
+                                        description);
+
+            search.addResult(result);
+        }
         return search;
     }
 }

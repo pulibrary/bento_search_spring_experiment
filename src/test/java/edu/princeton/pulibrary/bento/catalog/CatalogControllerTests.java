@@ -31,11 +31,10 @@ public class CatalogControllerTests {
     void catalogPathReturnsOK() throws Exception {
         HttpSolrClient mockSolrClient = mock(HttpSolrClient.class);
         QueryResponse mockQueryResponse = mock(QueryResponse.class);
-        SolrDocumentList mockSolrDocumentList = mock(SolrDocumentList.class);
+        SolrDocumentList mockSolrDocumentList = new SolrDocumentList();
         when(solrClientFactory.build()).thenReturn(mockSolrClient);
         when(mockSolrClient.query(any())).thenReturn(mockQueryResponse);
         when(mockQueryResponse.getResults()).thenReturn(mockSolrDocumentList);
-        when(mockSolrDocumentList.getNumFound()).thenReturn(Long.valueOf(25));
 
         this.mvc.perform(get("/search/catalog?query=art+history"))
                 .andExpect(status().isOk());

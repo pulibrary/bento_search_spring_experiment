@@ -42,6 +42,9 @@ public final class SolrQuery {
         final Map<String, String> queryParamMap = new HashMap<String, String>();
         queryParamMap.put("q", searchString);
         queryParamMap.put("rows", "3");
+        queryParamMap.put("fl",
+                          "id,title_display,author_display,"
+                          + "pub_created_display");
         MapSolrParams queryParams = new MapSolrParams(queryParamMap);
 
         final QueryResponse response = client.query(queryParams);

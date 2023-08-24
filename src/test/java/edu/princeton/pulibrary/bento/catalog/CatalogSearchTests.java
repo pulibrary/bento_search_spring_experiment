@@ -36,8 +36,8 @@ public class CatalogSearchTests {
         CatalogSearch catalog = new CatalogSearch(query);
 
         CatalogSearchResult result = new CatalogSearchResult("Mushrooms",
-                                                             "Mushroom expert",
                                                              "https://catalog.princeton.edu/mushroom",
+                                                             "Mushroom expert",
                                                              "A good book");
         catalog.addResult(result);
         assertEquals("Mushroom expert",
