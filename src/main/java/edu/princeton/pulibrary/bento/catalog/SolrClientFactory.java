@@ -10,7 +10,9 @@ public class SolrClientFactory {
      * @return HttpSolrClient
      */
     HttpSolrClient build() {
-        String urlString = "http://localhost:9090/solr/catalog-staging";
+        String configuredUrl = System.getenv("SOLR_URL");
+        String defaultUrl = "http://localhost:9090/solr/catalog-staging";
+        String urlString = configuredUrl == null ? defaultUrl : configuredUrl;
         return new HttpSolrClient.Builder(urlString).build();
     }
 }

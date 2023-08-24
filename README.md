@@ -13,6 +13,13 @@ mvn clean spring-boot:run # delete all compiled files and recompile
 
 The application will be available in your browser at http://localhost:8080
 
+### Run against Solr production instead
+
+```
+ssh -L 9091:localhost:8983 pulsys@lib-solr-prod6
+SOLR_URL=http://localhost:9091/solr/catalog-alma-production mvn spring-boot:run
+```
+
 ### Run tests
 
 ```
