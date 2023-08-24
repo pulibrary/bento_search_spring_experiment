@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import edu.princeton.pulibrary.bento.shared.QueryNormalizer;
+import lombok.Setter;
 
 /**
  * This class models a search in PUL's catalog.
@@ -17,7 +18,7 @@ public final class CatalogSearch {
     /**
      * The number of results matching the user's query.
      */
-    private int totalResults;
+    @Setter private Long totalResults;
 
     /**
      * The user's query.
@@ -47,8 +48,7 @@ public final class CatalogSearch {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode json = JsonNodeFactory.instance.objectNode();
         json.put("more_results_link", moreResultsLink());
-        json.put("more_results_link", moreResultsLink());
-        json.put("total_results", Integer.toString(totalResults));
+        json.put("total_results", String.valueOf(totalResults));
         ArrayNode array = mapper.valueToTree(results);
         json.putArray("results").addAll(array);
         return json;

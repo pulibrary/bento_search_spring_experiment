@@ -1,3 +1,4 @@
-* Add solrj and fetch first 3 results
-* Add total count
+* Only fetch 3 documents
+* Only fetch the correct fl
+* Map the fl to the CatalogSearch class
 * Fill out the spreadsheet

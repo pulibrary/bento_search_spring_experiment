@@ -6,6 +6,7 @@ asdf plugin add maven
 asdf install
 . ~/.asdf/plugins/java/set-java-home.zsh
 export MAVEN_HOME=$(asdf where maven)
+ssh -L 9090:localhost:8983 pulsys@lib-solr-staging5
 mvn spring-boot:run
 mvn clean spring-boot:run # delete all compiled files and recompile
 ```
