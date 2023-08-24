@@ -47,6 +47,11 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.solr</groupId>
+			<artifactId>solr-solrj</artifactId>
+			<version>8.4.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
