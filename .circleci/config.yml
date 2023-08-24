@@ -1,0 +1,15 @@
+version: 2.1
+jobs:
+  semgrep:
+    docker:
+        - image: returntocorp/semgrep
+    steps:
+      - checkout
+      - run:
+          name: Check code against community-provided semgrep rules
+          command: semgrep ci --config auto
+workflows:
+  version: 2
+  default:
+    jobs:
+      - semgrep
