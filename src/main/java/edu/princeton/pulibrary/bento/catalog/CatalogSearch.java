@@ -1,7 +1,13 @@
 package edu.princeton.pulibrary.bento.catalog;
 
-import java.util.Hashtable;
+import java.util.ArrayList;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import edu.princeton.pulibrary.bento.shared.QueryNormalizer;
 
 /**
@@ -19,23 +25,41 @@ public final class CatalogSearch {
     private String query;
 
     /**
+     * A List of documents that match the user's query.
+     */
+    private List<CatalogSearchResult> results;
+
+    /**
      * Initializer.
      * @param userQuery
      */
     public CatalogSearch(final String userQuery) {
         this.query = userQuery;
+        this.results = new ArrayList<CatalogSearchResult>();
     }
 
     /**
-     * A Hashtable that Jackson can then convert into JSON
+     * A JSON object node
      * that we can provide to the client.
-     * @return Hashtable<String, String>
+     * @return HashMap<String, String|List<CatalogSearchResult>>
      */
-    @JsonValue public Hashtable<String, String> toJSON() {
-        Hashtable<String, String> json = new Hashtable<String, String>();
+    @JsonValue public ObjectNode toJSON() {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectNode json = JsonNodeFactory.instance.objectNode();
+        json.put("more_results_link", moreResultsLink());
         json.put("more_results_link", moreResultsLink());
         json.put("total_results", Integer.toString(totalResults));
+        ArrayNode array = mapper.valueToTree(results);
+        json.putArray("results").addAll(array);
         return json;
+    }
+
+    /**
+     * Add a search result.
+     * @param result
+     */
+    public void addResult(final CatalogSearchResult result) {
+        results.add(result);
     }
 
     private String moreResultsLink() {
