@@ -38,7 +38,7 @@ public final class CatalogSearch {
         return json;
     }
 
-    public final String moreResultsLink() {
+    private String moreResultsLink() {
         String normalizedQuery = new QueryNormalizer(this.query).normalize();
         StringBuilder builder = new StringBuilder();
         builder.append("https://catalog.princeton.edu")

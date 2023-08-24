@@ -1,4 +1,3 @@
-* Finish configuring and appeasing checkstyle
 * Add checkstyle to CircleCI (https://circleci.com/developer/orbs/orb/circleci/maven)
 * Add tests to CircleCI
 * Add hard-coded results to the API response

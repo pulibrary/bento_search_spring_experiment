@@ -12,23 +12,25 @@ public class BentoApplication {
      * Run the spring application.
      * @param args
      */
-	public static void main(String[] args) {
-		SpringApplication.run(BentoApplication.class, args);
-	}
+    public static void main(final String[] args) {
+        SpringApplication.run(BentoApplication.class, args);
+    }
 
     /**
      * Authorize the routes that will be used in the application.
      * @param http
-     * @return
+     * @return SecurityFilterChain
      * @throws Exception
      */
-	@Bean
-	public SecurityFilterChain securityFilterChain(final HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests(requests ->
-            requests.requestMatchers("/search/catalog").anonymous()
-                                                                   .anyRequest()
-                                                                   .authenticated());
-		return http.build();
-	}
+    @Bean
+    public SecurityFilterChain securityFilterChain(final HttpSecurity http)
+        throws Exception {
+        http.authorizeHttpRequests(requests ->
+            requests.requestMatchers(
+                "/search/catalog").anonymous()
+                                              .anyRequest()
+                                              .authenticated());
+        return http.build();
+    }
 
 }
