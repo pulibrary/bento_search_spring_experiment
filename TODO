@@ -1,4 +1,3 @@
-* Only fetch 3 documents
 * Only fetch the correct fl
 * Map the fl to the CatalogSearch class
 * Fill out the spreadsheet

@@ -41,6 +41,7 @@ public final class SolrQuery {
     public SolrDocumentList results() throws IOException, SolrServerException {
         final Map<String, String> queryParamMap = new HashMap<String, String>();
         queryParamMap.put("q", searchString);
+        queryParamMap.put("rows", "3");
         MapSolrParams queryParams = new MapSolrParams(queryParamMap);
 
         final QueryResponse response = client.query(queryParams);
