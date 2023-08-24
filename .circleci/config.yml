@@ -1,5 +1,16 @@
 version: 2.1
 jobs:
+  bearer:
+    docker:
+        - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: Install bearer SAST tool
+          command: curl -sfL https://raw.githubusercontent.com/Bearer/bearer/main/contrib/install.sh | sh
+      - run:
+          name: Run bearer SAST tool
+          command: bin/bearer scan .
   semgrep:
     docker:
         - image: returntocorp/semgrep
@@ -12,4 +23,5 @@ workflows:
   version: 2
   default:
     jobs:
+      - bearer
       - semgrep

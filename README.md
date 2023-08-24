@@ -38,10 +38,11 @@ displays the results inline in the file, and keeps a log of success/failure.
 
 This adds a report to target/site/checkstyle.html, which you can peruse in the browser.
 
-### Semgrep
+### SAST tools
 
 
-This repository uses [semgrep](https://semgrep.dev/) to
+This repository uses [semgrep](https://semgrep.dev/)
+and [bearer](https://github.com/bearer/bearer) to
 perform static security analysis.
 
 To run semgrep locally:
@@ -49,6 +50,13 @@ To run semgrep locally:
 ```
 brew install semgrep
 semgrep --config auto . # run rules from the semgrep community
+```
+
+To run bearer locally:
+
+```
+brew install bearer/tap/bearer
+bearer scan .
 ```
 
 ### Compile a JAR

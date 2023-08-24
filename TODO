@@ -1,5 +1,6 @@
 * Finish configuring and appeasing checkstyle
-* Add CircleCI (https://circleci.com/developer/orbs/orb/circleci/maven)
+* Add checkstyle to CircleCI (https://circleci.com/developer/orbs/orb/circleci/maven)
+* Add tests to CircleCI
 * Add hard-coded results to the API response
 * Add solrj and fetch first 3 results
 * Add total count
