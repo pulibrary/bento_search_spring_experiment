@@ -73,3 +73,13 @@ bearer scan .
 mvn clean package
 ```
 This step will fail if any tests fail.  Otherwise, it will create a .jar file in the target directory.
+
+### Dependabots
+
+1. Copy the package name (including the groupID).  For example, `org.yaml:snakeyaml`
+1. Run `mvn dependency:tree -Dincludes=[package name]` locally to see which
+dependency in pom.xml requires the vulnerable depenency. For example, `mvn dependency:tree -Dincludes=org.yaml:snakeyaml`.
+1. Upgrade the dependency in pom.xml.
+1. Re-run `mvn dependency:tree -Dincludes=[package name]` to confirm that the
+vulnerable dependency has been upgraded to a secure version.
+1. Commit the pom.xml and open a PR.
