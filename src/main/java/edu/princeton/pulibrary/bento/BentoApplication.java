@@ -28,8 +28,8 @@ public class BentoApplication {
         http.authorizeHttpRequests(requests ->
             requests.requestMatchers(
                 "/search/catalog").anonymous()
-                                              .anyRequest()
-                                              .authenticated());
+                                  .anyRequest()
+                                  .authenticated());
         return http.build();
     }
 
